@@ -1,7 +1,7 @@
-import React from 'react';
-import ImageAlbum from '../components/ImageAlbum';
-import ProductList from '../components/ProductList';
-import './Homepage.css';
+import React from "react";
+import ProductList from "../components/ProductList";
+import "./Homepage.css";
+import { ImageAlbum } from "../components/ImageAlbum";
 
 function HomePage() {
   return (
