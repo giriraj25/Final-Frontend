@@ -1,0 +1,49 @@
+/* Styles for the checkout page */
+.checkout-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.checkout-items {
+  margin-bottom: 20px;
+}
+
+.checkout-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.checkout-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.card-element {
+  margin-bottom: 20px;
+}
+
+.pay-btn {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pay-btn:disabled {
+  background-color: #6c757d;
+}
+
+.pay-btn:hover {
+  background-color: #218838;
+}
