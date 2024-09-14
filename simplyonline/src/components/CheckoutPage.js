@@ -1,5 +1,3 @@
-// CheckoutPage.js
-
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import {
@@ -18,7 +16,8 @@ const stripePromise = loadStripe("your-public-stripe-key-here");
 const CheckoutForm = () => {
   const stripe = useStripe();
   const elements = useElements();
-  const { cart, totalPrice, clearCart } = useCart();
+  const { cart, totalPrice, clearCart, incrementItem, decrementItem } =
+    useCart(); // Use increment and decrement
   const navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -61,18 +60,39 @@ const CheckoutForm = () => {
                 <div>
                   <h3>{item.name}</h3>
                   <p>Price: ${item.price}</p>
-                  <p>Quantity: {item.quantity}</p>
+                  <div className="quantity-controls">
+                    <button
+                      type="button"
+                      className="quantity-btn"
+                      onClick={() => decrementItem(item.id)}
+                    >
+                      -
+                    </button>
+                    <input
+                      type="text"
+                      className="quantity-input"
+                      value={item.quantity}
+                      readOnly
+                    />
+                    <button
+                      type="button"
+                      className="quantity-btn"
+                      onClick={() => incrementItem(item.id)}
+                    >
+                      +
+                    </button>
+                  </div>
                   <p>Subtotal: ${(item.price * item.quantity).toFixed(2)}</p>
                 </div>
               </div>
             ))}
           </div>
-          <h3>Total: ${totalPrice}</h3>
+          <h3>Total: ${totalPrice.toFixed(2)}</h3>
           <div className="card-element">
             <CardElement />
           </div>
           <button type="submit" className="pay-btn" disabled={!stripe}>
-            Pay ${totalPrice}
+            Pay ${totalPrice.toFixed(2)}
           </button>
         </>
       )}

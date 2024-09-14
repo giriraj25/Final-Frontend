@@ -47,3 +47,31 @@
 .pay-btn:hover {
   background-color: #218838;
 }
+/* Align the quantity controls inline and center */
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.quantity-btn {
+  padding: 5px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.quantity-input {
+  width: 50px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-left: none;
+  border-right: none;
+  pointer-events: none;
+}
+
+.quantity-btn:hover {
+  background-color: #ddd;
+}

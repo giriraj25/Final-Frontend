@@ -33,6 +33,26 @@ const CartProvider = ({ children }) => {
     setCart([]);
   };
 
+  // Increment quantity of an item in the cart
+  const incrementItem = (productId) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      )
+    );
+  };
+
+  // Decrement quantity of an item in the cart (minimum 1)
+  const decrementItem = (productId) => {
+    setCart((prevCart) =>
+      prevCart.map((item) =>
+        item.id === productId && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    );
+  };
+
   useEffect(() => {
     setTotalItems(cart.reduce((acc, item) => acc + item.quantity, 0));
     setTotalPrice(
@@ -49,6 +69,8 @@ const CartProvider = ({ children }) => {
         addToCart,
         removeFromCart,
         clearCart,
+        incrementItem,
+        decrementItem,
       }}
     >
       {children}
